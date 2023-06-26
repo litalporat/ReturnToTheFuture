@@ -36,9 +36,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Jammo-Character\Scripts\CharacterSkinController.cs" />
      <Compile Include="Assets\fmsScript.cs" />
      <Compile Include="Assets\Jammo-Character\Scripts\MovementInput.cs" />
-     <Compile Include="Assets\Jammo-Character\Scripts\CharacterSkinController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity 2021.3.21f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -660,11 +660,14 @@
     <Reference Include="Unity.VisualScripting.Flow.Editor">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    <Reference Include="Unity.Recorder.Base">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
@@ -677,9 +680,6 @@
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -699,8 +699,8 @@
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+    <Reference Include="Unity.Postprocessing.Editor">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -711,14 +711,11 @@
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+    <Reference Include="Unity.VisualScripting.Flow">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
@@ -729,23 +726,26 @@
     <Reference Include="Cinemachine">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="com.unity.cinemachine.editor">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder.Editor">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder.Base">
-        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
         <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Shared.Editor">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.State">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+        <HintPath>C:\Users\porat\OneDrive\Documents\Lital\repositories\ReturnToTheFuture\Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
