@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 public class FmsScript : MonoBehaviour
 {
     CharacterController controller;
@@ -20,6 +21,10 @@ public class FmsScript : MonoBehaviour
     float mass = 1f;
     public float jumpSpeed = 5f;
 
+    // public GameObject Inventory;
+    // public List<GameObject> listItems;
+    // public List<GameObject> placement;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -28,13 +33,16 @@ public class FmsScript : MonoBehaviour
     {
         anim = player.GetComponent<Animator> ();
         Cursor.lockState = CursorLockMode.Locked;
-    
+        // listItems = new List<GameObject>();
     }
     void Update()
     {
         UpdateLook(); 
         UpdateMovement(); 
         UpdateGravity(); 
+        // for(int i=0; i < listItems.Count; i++){
+        //     Instantiate(listItems[i], placement[i].transform.position, Quaternion.identity);
+        // }
      }
 
     void UpdateLook()
@@ -72,5 +80,17 @@ public class FmsScript : MonoBehaviour
         var gravity = Physics.gravity * mass * Time.deltaTime;
         velocity.y = controller.isGrounded ? -1 : velocity.y + gravity.y;
     }
+
+    // private void onCollisionEnter(Collider other){
+    //     Debug.Log("in TriggerEnter");
+    //     if(Input.GetKeyDown(KeyCode.E)){
+    //         add(other.gameObject);
+    //     }
+    // }
+
+    // void add(GameObject gameObject){
+    //     listItems.Add(gameObject);
+    //     Destroy(gameObject);
+    // }
 }
 
