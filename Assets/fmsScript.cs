@@ -11,7 +11,7 @@ public class FmsScript : MonoBehaviour
     public float mouseSensivity = 3; 
     Vector2 look;
 
-    public Animator anim;
+    Animator anim;
     public GameObject player;
 
     Vector3 velocity; 
@@ -24,9 +24,16 @@ public class FmsScript : MonoBehaviour
 
     public LayerMask layerMaskWeapon;
 
-    public GameObject ImageBlue;
-    public GameObject ImageGreen;
-    public GameObject ImageRed;
+    public GameObject blueImg;
+    public GameObject greenImg;
+    public GameObject redImg;
+
+    public GameObject BlueWeapon;
+    public GameObject GreenWeapon;
+    public GameObject RedWeapon;
+    public GameObject currentWeapon;
+
+    public Transform weaponSpawn;
 
 
     private void Awake()
@@ -49,15 +56,52 @@ public class FmsScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
             float pickUpDistance = 3f;
             if(Physics.Raycast(targetImg.transform.position, targetImg.transform.forward, out RaycastHit raycastHit, pickUpDistance, layerMaskWeapon)){
-                Destroy(raycastHit.transform.gameObject);
+                Destroy(raycastHit.transform.parent.gameObject);
                 if(raycastHit.transform.name.StartsWith("B")){
-                    ImageBlue.SetActive(true);
+                    blueImg.SetActive(true);
                 }else if(raycastHit.transform.name.StartsWith("G")){
-                    ImageGreen.SetActive(true);
+                    greenImg.SetActive(true);
                 }else{
-                    ImageRed.SetActive(true);
+                    redImg.SetActive(true);
                 }
+                
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1) ){
+            replaceWeapon(1);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2)){
+            replaceWeapon(2);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3)){
+            replaceWeapon(3);
+        }
+        
+
+        if(Input.GetMouseButtonDown(0) && currentWeapon){
+            if(anim.GetBool("BShoot")){
+                anim.SetBool("BShoot", false);
+            }else{
+                anim.SetBool("BShoot", true);
+            }
+        }
+     }
+
+     void replaceWeapon(int weapon){
+        if(!anim.GetBool("BShoot")){
+            if(currentWeapon){
+                Destroy(currentWeapon);
+            }
+            Vector3 weaponRotation = new Vector3(90, 0, 0);
+            if(weapon == 1 && blueImg.activeSelf){
+                currentWeapon = Instantiate(BlueWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
+            }else if(weapon == 2 && greenImg.activeSelf){
+                currentWeapon = Instantiate(GreenWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
+            }else if(weapon == 3 && redImg.activeSelf){
+                currentWeapon = Instantiate(RedWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
+            }
+            currentWeapon.transform.parent = weaponSpawn;
         }
      }
 
@@ -88,18 +132,29 @@ public class FmsScript : MonoBehaviour
         if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             velocity.y += jumpSpeed;
+            anim.SetBool("BJump", true);
         }
+
         controller.Move((input * playerSpeed + velocity) * Time.deltaTime);
-        if(isMoving){
-            anim.SetFloat ("Blend", playerSpeed, VerticalAnimTime, Time.deltaTime * 2f);
-        }else{
-            anim.SetFloat ("Blend", 0, VerticalAnimTime, Time.deltaTime * 2f);
+        if(isMoving && !anim.GetBool("BWalk")){
+            anim.SetBool("BWalk", true);
         }
+        if(!isMoving){
+            anim.SetBool("BWalk", false);
+        }
+        // if(isMoving){
+        //     anim.SetFloat ("Blend", playerSpeed, VerticalAnimTime, Time.deltaTime * 2f);
+        // }else{
+        //     anim.SetFloat ("Blend", 0, VerticalAnimTime, Time.deltaTime * 2f);
+        // }
     }
     private void UpdateGravity()
     {    
         var gravity = Physics.gravity * mass * Time.deltaTime;
         velocity.y = controller.isGrounded ? -1 : velocity.y + gravity.y;
+        if(anim.GetBool("BJump") && controller.isGrounded){
+            anim.SetBool("BJump", false);
+        }
     }
 
 }
