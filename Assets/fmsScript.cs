@@ -5,9 +5,6 @@ public class FmsScript : MonoBehaviour
     CharacterController controller;
     public Transform cameraTransform; 
     public float playerSpeed = 5;
-    public float StartAnimTime = 0.3f;
-    public float StopAnimTime = 0.15f;
-    public float HorizontalAnimSmoothTime = 0.2f;
     [Range(0, 1f)]
     public float VerticalAnimTime = 0.2f;
 
@@ -21,28 +18,47 @@ public class FmsScript : MonoBehaviour
     float mass = 1f;
     public float jumpSpeed = 5f;
 
-    // public GameObject Inventory;
-    // public List<GameObject> listItems;
-    // public List<GameObject> placement;
+    bool textShow = true;
+    public GameObject text;
+    public GameObject targetImg;
+
+    public LayerMask layerMaskWeapon;
+
+    public GameObject ImageBlue;
+    public GameObject ImageGreen;
+    public GameObject ImageRed;
+
 
     private void Awake()
     {
+        // targetImg.SetActive(false);
         controller = GetComponent<CharacterController>();
     }
     void Start()
     {
         anim = player.GetComponent<Animator> ();
         Cursor.lockState = CursorLockMode.Locked;
-        // listItems = new List<GameObject>();
     }
     void Update()
     {
         UpdateLook(); 
         UpdateMovement(); 
         UpdateGravity(); 
-        // for(int i=0; i < listItems.Count; i++){
-        //     Instantiate(listItems[i], placement[i].transform.position, Quaternion.identity);
-        // }
+  
+
+        if(Input.GetKeyDown(KeyCode.E)){
+            float pickUpDistance = 3f;
+            if(Physics.Raycast(targetImg.transform.position, targetImg.transform.forward, out RaycastHit raycastHit, pickUpDistance, layerMaskWeapon)){
+                Destroy(raycastHit.transform.gameObject);
+                if(raycastHit.transform.name.StartsWith("B")){
+                    ImageBlue.SetActive(true);
+                }else if(raycastHit.transform.name.StartsWith("G")){
+                    ImageGreen.SetActive(true);
+                }else{
+                    ImageRed.SetActive(true);
+                }
+            }
+        }
      }
 
     void UpdateLook()
@@ -63,6 +79,11 @@ public class FmsScript : MonoBehaviour
         input += transform.right * x;
         input = Vector3.ClampMagnitude(input, 1f);
 
+        if(textShow && isMoving){
+            Destroy(text);
+            textShow = false;
+            targetImg.SetActive(true);
+        }
 
         if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
@@ -81,16 +102,5 @@ public class FmsScript : MonoBehaviour
         velocity.y = controller.isGrounded ? -1 : velocity.y + gravity.y;
     }
 
-    // private void onCollisionEnter(Collider other){
-    //     Debug.Log("in TriggerEnter");
-    //     if(Input.GetKeyDown(KeyCode.E)){
-    //         add(other.gameObject);
-    //     }
-    // }
-
-    // void add(GameObject gameObject){
-    //     listItems.Add(gameObject);
-    //     Destroy(gameObject);
-    // }
 }
 
