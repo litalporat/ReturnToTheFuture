@@ -6,7 +6,6 @@ public class FmsScript : MonoBehaviour
     public Transform cameraTransform; 
     public float playerSpeed = 5;
     [Range(0, 1f)]
-    public float VerticalAnimTime = 0.2f;
 
     public float mouseSensivity = 3; 
     Vector2 look;
@@ -31,14 +30,18 @@ public class FmsScript : MonoBehaviour
     public GameObject BlueWeapon;
     public GameObject GreenWeapon;
     public GameObject RedWeapon;
-    public GameObject currentWeapon;
+    GameObject currentWeapon;
+    public GameObject GreenLaser;
+    public GameObject BlueLaser;
+    public GameObject RedLaser;
+    Vector3 weaponRotation = new Vector3(90, 0, 0);
+    Vector3 laserRotation = new Vector3(100, 0, 0);
 
     public Transform weaponSpawn;
 
 
     private void Awake()
     {
-        // targetImg.SetActive(false);
         controller = GetComponent<CharacterController>();
     }
     void Start()
@@ -50,9 +53,44 @@ public class FmsScript : MonoBehaviour
     {
         UpdateLook(); 
         UpdateMovement(); 
-        UpdateGravity(); 
-  
+        UpdateGravity();
+        pickUp();
+        
 
+        if(Input.GetKeyDown(KeyCode.Alpha1) ){
+            replaceWeapon(1);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2)){
+            replaceWeapon(2);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3)){
+            replaceWeapon(3);
+        }
+        
+
+        if(Input.GetMouseButtonDown(0)){
+            if(currentWeapon){
+                anim.SetBool("BShoot", true);
+                Invoke("stopShoot",0.5f);
+            }
+        }
+     }
+
+    void stopShoot(){
+        GameObject currLaser;
+        if(currentWeapon.name.StartsWith("B")){
+            currLaser = BlueLaser;
+        }else if(currentWeapon.name.StartsWith("G")){
+            currLaser = GreenLaser;
+        }else{
+            currLaser = RedLaser;
+        }
+        
+        Destroy(Instantiate(currLaser, targetImg.transform.position, targetImg.transform.rotation),1);
+        anim.SetBool("BShoot", false);
+    }
+
+    void pickUp(){
         if(Input.GetKeyDown(KeyCode.E)){
             float pickUpDistance = 3f;
             if(Physics.Raycast(targetImg.transform.position, targetImg.transform.forward, out RaycastHit raycastHit, pickUpDistance, layerMaskWeapon)){
@@ -67,33 +105,12 @@ public class FmsScript : MonoBehaviour
                 
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.Alpha1) ){
-            replaceWeapon(1);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2)){
-            replaceWeapon(2);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3)){
-            replaceWeapon(3);
-        }
-        
-
-        if(Input.GetMouseButtonDown(0) && currentWeapon){
-            if(anim.GetBool("BShoot")){
-                anim.SetBool("BShoot", false);
-            }else{
-                anim.SetBool("BShoot", true);
-            }
-        }
-     }
-
+    }
      void replaceWeapon(int weapon){
         if(!anim.GetBool("BShoot")){
             if(currentWeapon){
                 Destroy(currentWeapon);
             }
-            Vector3 weaponRotation = new Vector3(90, 0, 0);
             if(weapon == 1 && blueImg.activeSelf){
                 currentWeapon = Instantiate(BlueWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
             }else if(weapon == 2 && greenImg.activeSelf){
@@ -101,7 +118,9 @@ public class FmsScript : MonoBehaviour
             }else if(weapon == 3 && redImg.activeSelf){
                 currentWeapon = Instantiate(RedWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
             }
-            currentWeapon.transform.parent = weaponSpawn;
+            if(currentWeapon){
+                currentWeapon.transform.parent = weaponSpawn;
+            }
         }
      }
 
@@ -142,11 +161,6 @@ public class FmsScript : MonoBehaviour
         if(!isMoving){
             anim.SetBool("BWalk", false);
         }
-        // if(isMoving){
-        //     anim.SetFloat ("Blend", playerSpeed, VerticalAnimTime, Time.deltaTime * 2f);
-        // }else{
-        //     anim.SetFloat ("Blend", 0, VerticalAnimTime, Time.deltaTime * 2f);
-        // }
     }
     private void UpdateGravity()
     {    

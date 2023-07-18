@@ -356,6 +356,7 @@
 "Assets/FmsScript.cs"
 "Assets/Jammo-Character/Scripts/CharacterSkinController.cs"
 "Assets/Jammo-Character/Scripts/MovementInput.cs"
+"Assets/LaserScript.cs"
 -langversion:9.0
 
 /deterministic
