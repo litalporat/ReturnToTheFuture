@@ -38,6 +38,9 @@ public class FmsScript : MonoBehaviour
     Vector3 laserRotation = new Vector3(100, 0, 0);
 
     public Transform weaponSpawn;
+    float pickUpDistance = 3f;
+    float laserDistance = 10f;
+    public GameObject ExplodeCube;
 
 
     private void Awake()
@@ -71,12 +74,12 @@ public class FmsScript : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             if(currentWeapon){
                 anim.SetBool("BShoot", true);
-                Invoke("stopShoot",0.5f);
+                Invoke("shoot",0.5f);
             }
         }
      }
 
-    void stopShoot(){
+    void shoot(){
         GameObject currLaser;
         if(currentWeapon.name.StartsWith("B")){
             currLaser = BlueLaser;
@@ -87,12 +90,20 @@ public class FmsScript : MonoBehaviour
         }
         
         Destroy(Instantiate(currLaser, targetImg.transform.position, targetImg.transform.rotation),1);
+
+        if(Physics.Raycast(targetImg.transform.position, cameraTransform.forward, out RaycastHit hit, laserDistance)){
+            Debug.Log(hit.transform.name);
+            if(hit.transform.name == "ShootCube"){
+                Instantiate(ExplodeCube, hit.transform.position, hit.transform.rotation);
+                Destroy(hit.transform.gameObject);
+            }
+        }
+
         anim.SetBool("BShoot", false);
     }
 
     void pickUp(){
         if(Input.GetKeyDown(KeyCode.E)){
-            float pickUpDistance = 3f;
             if(Physics.Raycast(targetImg.transform.position, targetImg.transform.forward, out RaycastHit raycastHit, pickUpDistance, layerMaskWeapon)){
                 Destroy(raycastHit.transform.parent.gameObject);
                 if(raycastHit.transform.name.StartsWith("B")){
