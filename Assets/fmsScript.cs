@@ -1,63 +1,62 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 public class FmsScript : MonoBehaviour
 {
     CharacterController controller;
-    public Transform cameraTransform; 
-    public float playerSpeed = 5;
-    [Range(0, 1f)]
-
-    public float mouseSensivity = 3; 
+    [SerializeField] Transform cameraTransform; 
+    float playerSpeed = 5;
+    float mouseSensivity = 3; 
     Vector2 look;
-
     Animator anim;
-    public GameObject player;
-
+    [SerializeField] GameObject player;
     Vector3 velocity; 
     float mass = 1f;
-    public float jumpSpeed = 5f;
-
+    float jumpSpeed = 5f;
     bool textShow = true;
-    public GameObject text;
-    public GameObject targetImg;
-
-    public LayerMask layerMaskWeapon;
-
-    public GameObject blueImg;
-    public GameObject greenImg;
-    public GameObject redImg;
-
-    public GameObject BlueWeapon;
-    public GameObject GreenWeapon;
-    public GameObject RedWeapon;
-    GameObject currentWeapon;
-    public GameObject GreenLaser;
-    public GameObject BlueLaser;
-    public GameObject RedLaser;
+    [SerializeField] GameObject text;
+    [SerializeField] GameObject targetImg;
+    [SerializeField] LayerMask layerMaskWeapon;
+    [SerializeField] GameObject blueImg;
+    [SerializeField] GameObject greenImg;
+    [SerializeField] GameObject redImg;
+    [SerializeField] GameObject BlueWeapon;
+    [SerializeField] GameObject GreenWeapon;
+    [SerializeField] GameObject RedWeapon;
+    [SerializeField] GameObject GreenLaser;
+    [SerializeField] GameObject BlueLaser;
+    [SerializeField] GameObject RedLaser;
     Vector3 weaponRotation = new Vector3(90, 0, 0);
     Vector3 laserRotation = new Vector3(100, 0, 0);
-
-    public Transform weaponSpawn;
+    [SerializeField] Transform weaponSpawn;
     float pickUpDistance = 3f;
     float laserDistance = 10f;
-    public GameObject ExplodeCube;
+    [SerializeField] GameObject ExplodeCube;
 
 
-    private void Awake()
-    {
-        controller = GetComponent<CharacterController>();
-    }
     void Start()
     {
+        controller = GetComponent<CharacterController>();
         anim = player.GetComponent<Animator> ();
         Cursor.lockState = CursorLockMode.Locked;
+        if(VariableScript.blueWeapon){
+            blueImg.SetActive(true);
+        }
+        if(VariableScript.greenWeapon){
+            greenImg.SetActive(true);
+        }
+        if(VariableScript.redWeapon){
+            redImg.SetActive(true);
+        }
     }
     void Update()
     {
         UpdateLook(); 
         UpdateMovement(); 
         UpdateGravity();
-        pickUp();
+
+        if(Input.GetKeyDown(KeyCode.E)){
+            pickUp();
+        }
         
 
         if(Input.GetKeyDown(KeyCode.Alpha1) ){
@@ -72,18 +71,24 @@ public class FmsScript : MonoBehaviour
         
 
         if(Input.GetMouseButtonDown(0)){
-            if(currentWeapon){
+            if(VariableScript.currWeapon){
                 anim.SetBool("BShoot", true);
                 Invoke("shoot",0.5f);
             }
         }
      }
 
+    void OnTriggerEnter(Collider other){
+        if(other.name.StartsWith("Portal")){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+        }
+    }
+
     void shoot(){
         GameObject currLaser;
-        if(currentWeapon.name.StartsWith("B")){
+        if(VariableScript.currWeapon.name.StartsWith("B")){
             currLaser = BlueLaser;
-        }else if(currentWeapon.name.StartsWith("G")){
+        }else if(VariableScript.currWeapon.name.StartsWith("G")){
             currLaser = GreenLaser;
         }else{
             currLaser = RedLaser;
@@ -92,7 +97,6 @@ public class FmsScript : MonoBehaviour
         Destroy(Instantiate(currLaser, targetImg.transform.position, targetImg.transform.rotation),1);
 
         if(Physics.Raycast(targetImg.transform.position, cameraTransform.forward, out RaycastHit hit, laserDistance)){
-            Debug.Log(hit.transform.name);
             if(hit.transform.name == "ShootCube"){
                 Instantiate(ExplodeCube, hit.transform.position, hit.transform.rotation);
                 Destroy(hit.transform.gameObject);
@@ -103,34 +107,35 @@ public class FmsScript : MonoBehaviour
     }
 
     void pickUp(){
-        if(Input.GetKeyDown(KeyCode.E)){
-            if(Physics.Raycast(targetImg.transform.position, targetImg.transform.forward, out RaycastHit raycastHit, pickUpDistance, layerMaskWeapon)){
-                Destroy(raycastHit.transform.parent.gameObject);
-                if(raycastHit.transform.name.StartsWith("B")){
-                    blueImg.SetActive(true);
-                }else if(raycastHit.transform.name.StartsWith("G")){
-                    greenImg.SetActive(true);
-                }else{
-                    redImg.SetActive(true);
-                }
-                
+        if(Physics.Raycast(targetImg.transform.position, targetImg.transform.forward, out RaycastHit raycastHit, pickUpDistance, layerMaskWeapon)){
+            Destroy(raycastHit.transform.parent.gameObject);
+            if(raycastHit.transform.name.StartsWith("Blue")){
+                blueImg.SetActive(true);
+                VariableScript.blueWeapon = true;
+            }else if(raycastHit.transform.name.StartsWith("Green")){
+                greenImg.SetActive(true);
+                VariableScript.greenWeapon = true;
+            }else if(raycastHit.transform.name.StartsWith("Red")){
+                redImg.SetActive(true);
+                VariableScript.redWeapon = true;
             }
+            
         }
     }
      void replaceWeapon(int weapon){
         if(!anim.GetBool("BShoot")){
-            if(currentWeapon){
-                Destroy(currentWeapon);
+            if(VariableScript.currWeapon){
+                Destroy(VariableScript.currWeapon);
             }
-            if(weapon == 1 && blueImg.activeSelf){
-                currentWeapon = Instantiate(BlueWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
-            }else if(weapon == 2 && greenImg.activeSelf){
-                currentWeapon = Instantiate(GreenWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
-            }else if(weapon == 3 && redImg.activeSelf){
-                currentWeapon = Instantiate(RedWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
+            if(weapon == 1 && VariableScript.blueWeapon){
+                VariableScript.currWeapon = Instantiate(BlueWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
+            }else if(weapon == 2 && VariableScript.greenWeapon){
+                VariableScript.currWeapon = Instantiate(GreenWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
+            }else if(weapon == 3 && VariableScript.redWeapon){
+                VariableScript.currWeapon = Instantiate(RedWeapon, weaponSpawn.position, Quaternion.Euler(weaponRotation));
             }
-            if(currentWeapon){
-                currentWeapon.transform.parent = weaponSpawn;
+            if(VariableScript.currWeapon){
+                VariableScript.currWeapon.transform.parent = weaponSpawn;
             }
         }
      }
