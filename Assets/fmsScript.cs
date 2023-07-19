@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class FmsScript : MonoBehaviour
 {
     CharacterController controller;
@@ -12,8 +13,7 @@ public class FmsScript : MonoBehaviour
     Vector3 velocity; 
     float mass = 1f;
     float jumpSpeed = 5f;
-    bool textShow = true;
-    [SerializeField] GameObject text;
+    [SerializeField] TMP_Text text;
     [SerializeField] GameObject targetImg;
     [SerializeField] LayerMask layerMaskWeapon;
     [SerializeField] GameObject blueImg;
@@ -31,6 +31,10 @@ public class FmsScript : MonoBehaviour
     float pickUpDistance = 3f;
     float laserDistance = 10f;
     [SerializeField] GameObject ExplodeCube;
+    [SerializeField] GameObject Life;
+    int lifeCount = 3;
+    Vector3 startPosition;
+    bool restartPosition = false;
 
 
     void Start()
@@ -38,6 +42,8 @@ public class FmsScript : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = player.GetComponent<Animator> ();
         Cursor.lockState = CursorLockMode.Locked;
+        startPosition = transform.position;
+
         if(VariableScript.blueWeapon){
             blueImg.SetActive(true);
         }
@@ -51,13 +57,20 @@ public class FmsScript : MonoBehaviour
     void Update()
     {
         UpdateLook(); 
-        UpdateMovement(); 
         UpdateGravity();
+        
+        if(!restartPosition){
+            UpdateMovement();
+        }else{
+            transform.position = startPosition;
+            restartPosition = false;
+        }
+
 
         if(Input.GetKeyDown(KeyCode.E)){
             pickUp();
         }
-        
+
 
         if(Input.GetKeyDown(KeyCode.Alpha1) ){
             replaceWeapon(1);
@@ -77,6 +90,27 @@ public class FmsScript : MonoBehaviour
             }
         }
      }
+
+    void OnCollisionEnter(Collision other){
+        if(other.gameObject.name.StartsWith("Car")){
+            anim.SetBool("BFall", true);
+            lifeCount--;
+            if(lifeCount > 0){
+                restartPosition = true;
+                Life.transform.GetChild(lifeCount).gameObject.SetActive(false);
+                Destroy(other.gameObject);
+                text.text = "TRY AGAIN";
+
+            }else{
+                text.text = "DEAD";
+                // Invoke("dead", 1);
+            }
+        }
+    }
+
+    void dead(){
+        //go to lost scene or start over scene
+    }
 
     void OnTriggerEnter(Collider other){
         if(other.name.StartsWith("Portal")){
@@ -156,11 +190,10 @@ public class FmsScript : MonoBehaviour
         var input = new Vector3();
         input += transform.forward * z;
         input += transform.right * x;
-        input = Vector3.ClampMagnitude(input, 1f);
+        // input = Vector3.ClampMagnitude(input, 1f);
 
-        if(textShow && isMoving){
-            Destroy(text);
-            textShow = false;
+        if(!text.text.Equals("") && isMoving){
+            text.text = "";
             targetImg.SetActive(true);
         }
 
