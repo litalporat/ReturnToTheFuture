@@ -366,6 +366,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b843baca25ba3b042995686151157103, type: 3}
+--- !u!1 &222256335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3413091837135372608, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+  m_PrefabInstance: {fileID: 1913414601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &234360013
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +475,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04928572, y: 0.0559159, z: 0.024726909}
   m_Center: {x: -0.012279408, y: -0.023026347, z: -0.004700623}
+--- !u!1 &591202035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3413091837193885064, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+  m_PrefabInstance: {fileID: 1913414601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &678933988 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -803202598664706803, guid: 830e65879e586b74fafb81460d1c58e2, type: 3}
@@ -1300,9 +1310,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: FirstCamera
+      value: 
+      objectReference: {fileID: 222256335}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: ThirdCamera
+      value: 
+      objectReference: {fileID: 591202035}
     - target: {fileID: 3413091837099472291, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_Name
       value: 'fms '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837099472291, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3413091837099472312, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_RootOrder
@@ -1353,6 +1375,26 @@ PrefabInstance:
       value: 'COLLECT YOUR WEAPONS
 
         PRESS E'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97236997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.23344536
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}

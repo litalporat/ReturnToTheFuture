@@ -213,7 +213,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 50, y: 1, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3413091837135372611}
   - {fileID: 7649091561576755055}
@@ -281,9 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704b58577a8fcb7498ca236800e2337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 3413091837135372611}
+  FirstCamera: {fileID: 3413091837135372608}
+  ThirdCamera: {fileID: 3413091837193885064}
   player: {fileID: 6664291602416967036}
-  text: {fileID: 3413091837147248581}
+  text: {fileID: 3413091837147248583}
   targetImg: {fileID: 3413091837903846559}
   layerMaskWeapon:
     serializedVersion: 2
@@ -299,6 +300,7 @@ MonoBehaviour:
   RedLaser: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   weaponSpawn: {fileID: 3413091836356328379}
   ExplodeCube: {fileID: 1583090066380541820, guid: 4a207e2fdc7c44641943f50e81e1d1ff, type: 3}
+  Life: {fileID: 0}
 --- !u!1 &3413091837135372608
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,14 +622,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3413091837193885064}
-  m_LocalRotation: {x: 0.02872561, y: -0, z: -0, w: 0.99958736}
-  m_LocalPosition: {x: 0, y: 0.071, z: 0.558}
+  m_LocalRotation: {x: 0.23344536, y: 0, z: 0, w: 0.97236997}
+  m_LocalPosition: {x: 0, y: 1.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3413091837099472312}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 3.292, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 27, y: 0, z: 0}
 --- !u!20 &3413091837193885066
 Camera:
   m_ObjectHideFlags: 0
