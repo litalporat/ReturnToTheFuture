@@ -4,7 +4,8 @@ using TMPro;
 public class FmsScript : MonoBehaviour
 {
     CharacterController controller;
-    [SerializeField] Transform cameraTransform; 
+    [SerializeField] GameObject FirstCamera; 
+    [SerializeField] GameObject ThirdCamera; 
     float playerSpeed = 5;
     float mouseSensivity = 3; 
     Vector2 look;
@@ -29,7 +30,7 @@ public class FmsScript : MonoBehaviour
     Vector3 laserRotation = new Vector3(100, 0, 0);
     [SerializeField] Transform weaponSpawn;
     float pickUpDistance = 3f;
-    float laserDistance = 10f;
+    float laserDistance = 15f;
     [SerializeField] GameObject ExplodeCube;
     [SerializeField] GameObject Life;
     int lifeCount = 3;
@@ -66,6 +67,10 @@ public class FmsScript : MonoBehaviour
             restartPosition = false;
         }
 
+        if(Input.GetKeyDown(KeyCode.C)){
+            switchCameras();
+        }
+
 
         if(Input.GetKeyDown(KeyCode.E)){
             pickUp();
@@ -93,9 +98,9 @@ public class FmsScript : MonoBehaviour
 
     void OnCollisionEnter(Collision other){
         if(other.gameObject.name.StartsWith("Car")){
-            anim.SetBool("BFall", true);
             lifeCount--;
             if(lifeCount > 0){
+                switchCameras();
                 restartPosition = true;
                 Life.transform.GetChild(lifeCount).gameObject.SetActive(false);
                 Destroy(other.gameObject);
@@ -103,13 +108,23 @@ public class FmsScript : MonoBehaviour
 
             }else{
                 text.text = "DEAD";
-                // Invoke("dead", 1);
+                Invoke("dead", 1);
             }
         }
     }
 
+    void switchCameras(){
+        if(FirstCamera.activeSelf){
+            ThirdCamera.SetActive(true);
+            FirstCamera.SetActive(false);
+        }else{
+            FirstCamera.SetActive(true);
+            ThirdCamera.SetActive(false);
+        }
+    }
+
     void dead(){
-        //go to lost scene or start over scene
+        Application.Quit();
     }
 
     void OnTriggerEnter(Collider other){
@@ -130,7 +145,7 @@ public class FmsScript : MonoBehaviour
         
         Destroy(Instantiate(currLaser, targetImg.transform.position, targetImg.transform.rotation),1);
 
-        if(Physics.Raycast(targetImg.transform.position, cameraTransform.forward, out RaycastHit hit, laserDistance)){
+        if(Physics.Raycast(FirstCamera.transform.position, FirstCamera.transform.forward, out RaycastHit hit, laserDistance)){
             if(hit.transform.name == "ShootCube"){
                 Instantiate(ExplodeCube, hit.transform.position, hit.transform.rotation);
                 Destroy(hit.transform.gameObject);
@@ -179,7 +194,7 @@ public class FmsScript : MonoBehaviour
         look.x += Input.GetAxis("Mouse X") * mouseSensivity; 
         look.y += Input.GetAxis("Mouse Y") * mouseSensivity; 
         look.y = Mathf.Clamp(look.y, -90, 90);
-        cameraTransform.localRotation = Quaternion.Euler(-look.y, 0, 0); 
+        FirstCamera.transform.localRotation = Quaternion.Euler(-look.y, 0, 0); 
         transform.localRotation = Quaternion.Euler(0, look.x, 0); 
      }
     void UpdateMovement()
