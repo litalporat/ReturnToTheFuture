@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class FmsScript : MonoBehaviour
+public class fmsScript : MonoBehaviour
 {
     CharacterController controller;
-    [SerializeField] Transform cameraTransform; 
+    [SerializeField] Transform activeTransform; 
+
+    [SerializeField] Transform FirstPersonCameraTransform; 
+    [SerializeField] Transform ThirdPersonCameraTransform; 
     float playerSpeed = 5;
     float mouseSensivity = 3; 
     Vector2 look;
@@ -57,8 +60,17 @@ public class FmsScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
             pickUp();
         }
-        
 
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            SwitchCamera(true);
+        }
+
+        if(Input.GetKeyUp(KeyCode.Tab))
+        {
+            SwitchCamera(false);
+        }
+        
         if(Input.GetKeyDown(KeyCode.Alpha1) ){
             replaceWeapon(1);
         }
@@ -84,6 +96,18 @@ public class FmsScript : MonoBehaviour
         }
     }
 
+    public void SwitchCamera(bool thirdPerson)
+    {
+        if(thirdPerson) {
+            activeTransform = ThirdPersonCameraTransform;
+            FirstPersonCameraTransform.gameObject.SetActive(false);
+        }
+        else {
+            activeTransform = FirstPersonCameraTransform;
+            FirstPersonCameraTransform.gameObject.SetActive(true);
+        }
+    }
+
     void shoot(){
         GameObject currLaser;
         if(VariableScript.currWeapon.name.StartsWith("B")){
@@ -96,7 +120,7 @@ public class FmsScript : MonoBehaviour
         
         Destroy(Instantiate(currLaser, targetImg.transform.position, targetImg.transform.rotation),1);
 
-        if(Physics.Raycast(targetImg.transform.position, cameraTransform.forward, out RaycastHit hit, laserDistance)){
+        if(Physics.Raycast(targetImg.transform.position, activeTransform.forward, out RaycastHit hit, laserDistance)){
             if(hit.transform.name == "ShootCube"){
                 Instantiate(ExplodeCube, hit.transform.position, hit.transform.rotation);
                 Destroy(hit.transform.gameObject);
@@ -142,11 +166,11 @@ public class FmsScript : MonoBehaviour
 
     void UpdateLook()
     {  
-        look.x += Input.GetAxis("Mouse X") * mouseSensivity; 
-        look.y += Input.GetAxis("Mouse Y") * mouseSensivity; 
+        look.x += Input.GetAxis("Mouse X") * mouseSensivity;
+        look.y += Input.GetAxis("Mouse Y") * mouseSensivity;
         look.y = Mathf.Clamp(look.y, -90, 90);
-        cameraTransform.localRotation = Quaternion.Euler(-look.y, 0, 0); 
-        transform.localRotation = Quaternion.Euler(0, look.x, 0); 
+        activeTransform.localRotation = Quaternion.Euler(-look.y, 0, 0);
+        transform.localRotation = Quaternion.Euler(0, look.x, 0);
      }
     void UpdateMovement()
     { 

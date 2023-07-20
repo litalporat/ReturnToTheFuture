@@ -434,6 +434,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &273948396 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3413091837135372611, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+  m_PrefabInstance: {fileID: 1913414601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &514344953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7421800393620806388, guid: 830e65879e586b74fafb81460d1c58e2, type: 3}
@@ -524,6 +529,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.048812263, y: 0.05539345, z: 0.024264395}
   m_Center: {x: -0.012266087, y: -0.022969887, z: -0.0047112866}
+--- !u!4 &853355553 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+  m_PrefabInstance: {fileID: 1913414601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &910416674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2272081801690366612, guid: b843baca25ba3b042995686151157103, type: 3}
@@ -1300,6 +1310,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: activeTransform
+      value: 
+      objectReference: {fileID: 273948396}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 853355553}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: FirstPersonCameraTransform
+      value: 
+      objectReference: {fileID: 273948396}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: ThirdPersonCameraTransform
+      value: 
+      objectReference: {fileID: 853355553}
     - target: {fileID: 3413091837099472291, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_Name
       value: 'fms '
@@ -1348,11 +1374,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3413091837135372608, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3413091837147248583, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_text
       value: 'COLLECT YOUR WEAPONS
 
-        PRESS E'
+        PRESS E
+
+        Switch Camera by holding
+        tab'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885064, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.766
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9855399
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1694436
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 19.511
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413091837193885066, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}

@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] float chaseRange = 5f;
     [SerializeField] float turnSpeed = 5f;
+    [SerializeField] float patrolRadius = 10f;
 
     NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
@@ -37,6 +38,9 @@ public class EnemyAI : MonoBehaviour
         else if (distanceToTarget <= chaseRange)
         {
             isProvoked = true;
+        }
+        else {
+            Patrol();
         }
     }
 
@@ -76,6 +80,19 @@ public class EnemyAI : MonoBehaviour
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+    }
+
+    private void Patrol() 
+    {
+        Vector3 randomPoint = Random.insideUnitSphere * patrolRadius;
+        randomPoint += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomPoint, out hit, patrolRadius, NavMesh.AllAreas);
+        Vector3 finalPosition = hit.position;
+        navMeshAgent.speed = 5f;
+        navMeshAgent.acceleration = 8f;
+        GetComponent<Animator>().SetTrigger("move");
+        navMeshAgent.SetDestination(finalPosition);
     }
 
     void OnDrawGizmosSelected()

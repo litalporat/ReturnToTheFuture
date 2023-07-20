@@ -429,6 +429,7 @@
 "Assets/Asset Packs/Standard Assets/Utility/TimedObjectDestructor.cs"
 "Assets/Asset Packs/Standard Assets/Utility/WaypointCircuit.cs"
 "Assets/Asset Packs/Standard Assets/Utility/WaypointProgressTracker.cs"
+"Assets/FloatingHealthBar.cs"
 "Assets/fmsScript.cs"
 "Assets/Jammo-Character/Scripts/CharacterSkinController.cs"
 "Assets/Jammo-Character/Scripts/MovementInput.cs"
@@ -455,6 +456,7 @@
 "Assets/Scripts/WeaponSwitcher.cs"
 "Assets/Scripts/WeaponZoom.cs"
 "Assets/VariableScript.cs"
+"Assets/WonHandler.cs"
 -langversion:9.0
 
 /deterministic
