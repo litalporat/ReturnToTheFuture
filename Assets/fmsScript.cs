@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-public class FmsScript : MonoBehaviour
+public class fmsScript : MonoBehaviour
 {
     CharacterController controller;
     [SerializeField] GameObject FirstCamera; 
     [SerializeField] GameObject ThirdCamera; 
-    float playerSpeed = 5;
+    [ SerializeField] float playerSpeed = 5;
     float mouseSensivity = 3; 
     Vector2 look;
     Animator anim;
@@ -30,12 +30,16 @@ public class FmsScript : MonoBehaviour
     Vector3 laserRotation = new Vector3(100, 0, 0);
     [SerializeField] Transform weaponSpawn;
     float pickUpDistance = 3f;
-    float laserDistance = 15f;
+    float laserDistance = 20f;
     [SerializeField] GameObject ExplodeCube;
     [SerializeField] GameObject Life;
     int lifeCount = 3;
     Vector3 startPosition;
     bool restartPosition = false;
+    [SerializeField] GameObject Map;
+    GameObject smallMap;
+    GameObject bigMap;
+    [SerializeField] GameObject ExplodeDoor;
 
 
     void Start()
@@ -53,6 +57,11 @@ public class FmsScript : MonoBehaviour
         }
         if(VariableScript.redWeapon){
             redImg.SetActive(true);
+        }
+
+        if(Map){
+            smallMap = Map.transform.GetChild(0).gameObject;
+            bigMap = Map.transform.GetChild(1).gameObject;
         }
     }
     void Update()
@@ -92,6 +101,18 @@ public class FmsScript : MonoBehaviour
             if(VariableScript.currWeapon){
                 anim.SetBool("BShoot", true);
                 Invoke("shoot",0.5f);
+            }
+        }
+
+        if(Map){
+            if(Input.GetKeyDown(KeyCode.M)){
+                if(smallMap.activeSelf){
+                    smallMap.SetActive(false);
+                    bigMap.SetActive(true);
+                }else{
+                    bigMap.SetActive(false);
+                    smallMap.SetActive(true);
+                }
             }
         }
      }
@@ -146,8 +167,13 @@ public class FmsScript : MonoBehaviour
         Destroy(Instantiate(currLaser, targetImg.transform.position, targetImg.transform.rotation),1);
 
         if(Physics.Raycast(FirstCamera.transform.position, FirstCamera.transform.forward, out RaycastHit hit, laserDistance)){
+            Debug.Log(hit.transform.name);
             if(hit.transform.name == "ShootCube"){
                 Instantiate(ExplodeCube, hit.transform.position, hit.transform.rotation);
+                Destroy(hit.transform.gameObject);
+            } else if(hit.transform.name.StartsWith("door")){
+                Debug.Log("in if");
+                Instantiate(ExplodeDoor, hit.transform.position, hit.transform.rotation);
                 Destroy(hit.transform.gameObject);
             }
         }
