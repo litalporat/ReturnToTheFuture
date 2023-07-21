@@ -357,6 +357,7 @@
 "Assets/BtnScript.cs"
 "Assets/carScript.cs"
 "Assets/CarSpawnScript.cs"
+"Assets/EnemyScript.cs"
 "Assets/FloatingHealthBar.cs"
 "Assets/fmsScript.cs"
 "Assets/Jammo-Character/Scripts/CharacterSkinController.cs"
