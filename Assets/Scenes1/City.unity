@@ -122,7 +122,12 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 019ed73ad077d3c46b4d14e5ff6f56d3, type: 2}
+--- !u!223 &118873938 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 8578319041589143474, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+  m_PrefabInstance: {fileID: 3413091836049444008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &199424989
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +248,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3413091837935668501, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
   m_PrefabInstance: {fileID: 3413091836049444008}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &302801549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 302801550}
+  m_Layer: 0
+  m_Name: RespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &302801550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302801549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50, y: 0.19, z: 1.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361946997
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,9 +816,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147670263}
   m_CullTransparentMesh: 1
---- !u!1 &1501406319 stripped
+--- !u!114 &1501406321 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3413091837147248583, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+  m_PrefabInstance: {fileID: 3413091836049444008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1718699876 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3413091837147248581, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3413091837193885064, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+  m_PrefabInstance: {fileID: 3413091836049444008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1786091572 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3413091837135372608, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
   m_PrefabInstance: {fileID: 3413091836049444008}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1859503799
@@ -1137,15 +1189,43 @@ PrefabInstance:
     - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: text
       value: 
-      objectReference: {fileID: 1501406319}
+      objectReference: {fileID: 1501406321}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: FirstCamera
+      value: 
+      objectReference: {fileID: 1786091572}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: ThirdCamera
+      value: 
+      objectReference: {fileID: 1718699876}
     - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: startPosition
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 118873938}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: activeTransform
       value: 
       objectReference: {fileID: 1887249815}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: respawnPosition
+      value: 
+      objectReference: {fileID: 302801550}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: startPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: startPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: startPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1129246065717196202, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: FirstPersonCameraTransform
       value: 
@@ -1154,13 +1234,21 @@ PrefabInstance:
       propertyPath: ThirdPersonCameraTransform
       value: 
       objectReference: {fileID: 2121458492}
+    - target: {fileID: 2087932513571809848, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3413091837099472291, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_Name
       value: 'fms '
       objectReference: {fileID: 0}
+    - target: {fileID: 3413091837099472291, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3413091837099472292, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3413091837099472292, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_Constraints
@@ -1219,7 +1307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3413091837193885064, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3413091837193885065, guid: 079404cd54db3734ba463636cfab1ebc, type: 3}
       propertyPath: m_LocalPosition.y

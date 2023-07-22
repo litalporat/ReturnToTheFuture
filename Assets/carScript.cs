@@ -5,6 +5,10 @@ using UnityEngine;
 public class carScript : MonoBehaviour
 {
     float speed;
+    float knockbackForce = 10f;
+
+    public Vector3 initialPlayerPosition;
+    
     void Start(){
         speed = GetComponentInParent<CarSpawnScript>().speed;
     }
@@ -17,6 +21,10 @@ public class carScript : MonoBehaviour
         string name = other.gameObject.name;
         if(name.Equals("left") || name.Equals("right")){
             Destroy(gameObject);
+        }
+        if(other.gameObject.tag == "Player")
+        {
+            other.transform.position = initialPlayerPosition;
         }
     }
 }
