@@ -117,7 +117,9 @@
      <Compile Include="Assets\Asset Packs\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs" />
      <Compile Include="Assets\Asset Packs\Standard Assets\Utility\AlphaButtonClickMask.cs" />
      <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IconUtility.cs" />
+     <Compile Include="Assets\WonHandler.cs" />
      <Compile Include="Assets\Asset Packs\Standard Assets\Utility\FOVKick.cs" />
+     <Compile Include="Assets\FloatingHealthBar.cs" />
      <Compile Include="Assets\VariableScript.cs" />
      <Compile Include="Assets\Scripts\DisplayDamage.cs" />
      <Compile Include="Assets\Asset Packs\Standard Assets\ParticleSystems\Scripts\WaterHoseParticles.cs" />
@@ -133,8 +135,9 @@
      <Compile Include="Assets\Asset Packs\Standard Assets\Characters\RollerBall\Scripts\BallUserControl.cs" />
      <Compile Include="Assets\Asset Packs\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
      <Compile Include="Assets\Asset Packs\Standard Assets\ParticleSystems\Scripts\Hose.cs" />
-     <Compile Include="Assets\FloatingHealthBar.cs" />
-     <Compile Include="Assets\WonHandler.cs" />
+     <Compile Include="Assets\CarSpawnScript.cs" />
+     <Compile Include="Assets\BtnScript.cs" />
+     <Compile Include="Assets\carScript.cs" />
      <None Include="Assets\Asset Packs\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -146,6 +149,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\Asset Packs\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+     <None Include="Assets\laxer tree pkg\README.txt" />
      <None Include="Assets\Asset Packs\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\Asset Packs\Standard Assets\Cameras\CameraGuidelines.txt" />

@@ -35,6 +35,8 @@ public class fmsScript : MonoBehaviour
     float laserDistance = 10f;
     [SerializeField] GameObject ExplodeCube;
 
+    private bool m_jump = false;
+
 
     void Start()
     {
@@ -55,7 +57,7 @@ public class fmsScript : MonoBehaviour
     {
         UpdateLook(); 
         UpdateMovement(); 
-        UpdateGravity();
+        // UpdateGravity();
 
         if(Input.GetKeyDown(KeyCode.E)){
             pickUp();
@@ -188,11 +190,11 @@ public class fmsScript : MonoBehaviour
             targetImg.SetActive(true);
         }
 
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
-        {
-            velocity.y += jumpSpeed;
-            anim.SetBool("BJump", true);
-        }
+        // if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        // {
+        //     velocity.y += jumpSpeed;
+        //     anim.SetBool("BJump", true);
+        // }
 
         controller.Move((input * playerSpeed + velocity) * Time.deltaTime);
         if(isMoving && !anim.GetBool("BWalk")){
@@ -204,10 +206,18 @@ public class fmsScript : MonoBehaviour
     }
     private void UpdateGravity()
     {    
-        var gravity = Physics.gravity * mass * Time.deltaTime;
-        velocity.y = controller.isGrounded ? -1 : velocity.y + gravity.y;
-        if(anim.GetBool("BJump") && controller.isGrounded){
-            anim.SetBool("BJump", false);
+        if (controller.isGrounded)
+        {
+            // Reset the vertical velocity when the player touches the ground
+            velocity.y = -1f;
+            if (anim.GetBool("BJump"))
+                anim.SetBool("BJump", false);
+        }
+        else
+        {
+        // Apply gravity only when the player is not grounded
+            var gravity = Physics.gravity * mass * Time.deltaTime;
+            velocity.y += gravity.y;
         }
     }
 
