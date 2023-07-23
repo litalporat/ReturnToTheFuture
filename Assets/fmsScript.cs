@@ -38,6 +38,9 @@ public class fmsScript : MonoBehaviour
     int lifeCount = 3;
     public Transform respawnPosition;
     bool disableMovement = false;
+    [SerializeField] GameObject smallMap;
+    [SerializeField] GameObject bigMap;
+    [SerializeField] GameObject ExplodeBarrier;
 
     void Start()
     {
@@ -97,7 +100,19 @@ public class fmsScript : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             if(VariableScript.currWeapon){
                 anim.SetBool("BShoot", true);
-                Invoke("shoot",0.5f);
+                Invoke("shoot",0.3f);
+            }
+        }
+
+        if(smallMap){
+            if(Input.GetKeyDown(KeyCode.M)){
+                if(smallMap.activeSelf){
+                    smallMap.SetActive(false);
+                    bigMap.SetActive(true);
+                }else{
+                    bigMap.SetActive(false);
+                    smallMap.SetActive(true);
+                }
             }
         }
      }
@@ -170,6 +185,10 @@ public class fmsScript : MonoBehaviour
                 Destroy(hit.transform.gameObject);
             }
             if(hit.transform.tag == "Car"){
+                Destroy(hit.transform.gameObject);
+            }
+            if(hit.transform.tag == "barrier"){
+                Instantiate(ExplodeBarrier, hit.transform.position, hit.transform.rotation);
                 Destroy(hit.transform.gameObject);
             }
         }
