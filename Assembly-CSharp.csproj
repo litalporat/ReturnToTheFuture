@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnemyScript.cs" />
      <Compile Include="Assets\fmsScript.cs" />
      <Compile Include="Assets\CarSpawnScript.cs" />
      <Compile Include="Assets\carScript.cs" />
@@ -45,7 +46,6 @@
      <Compile Include="Assets\WonHandler.cs" />
      <Compile Include="Assets\FloatingHealthBar.cs" />
      <Compile Include="Assets\VariableScript.cs" />
-     <Compile Include="Assets\EnemyScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

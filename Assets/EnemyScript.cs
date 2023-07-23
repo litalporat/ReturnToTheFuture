@@ -40,6 +40,7 @@ public class EnemyScript : MonoBehaviour
         stay = false;
         yield return new WaitForSeconds(waitTime);
         stay = true;
+        transform.rotation = Quaternion.Euler(directions[currWaypoint]);
         // Debug.Log(" not stay");
 
     }
