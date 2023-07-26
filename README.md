@@ -9,54 +9,54 @@ In the distant future, Earth faces an unprecedented threat as a horde of zombies
 "Return To The Future" is an action-packed, 3D platformer game where players take on the role of Jammo, a courageous robot from the future. Jammo embarks on a crucial mission to save Earth from impending doom caused by a zombie invasion. The game is divided into three distinct scenes, each presenting unique challenges and gameplay mechanics. The ultimate objective is for Jammo to reach the portal in the final scene to return to his futuristic home and secure Earth's future.
 
 ## Player Objective
-•	Collect different types of laser weapons strategically to prepare for the challenges ahead.
-•	Reveal the portal leading to the next scene.
-•	Navigate through the futuristic city and reach the portal location indicated on the map.
-•	Avoid getting hit by moving cars and other obstacles to preserve health.
-•	Use laser weapons wisely to clear obstacles and create a safe path to the portal.
-•	Eliminate zombies by shooting them multiple times before they reach Jammo.
+•	Collect different types of laser weapons strategically to prepare for the challenges ahead. <br>
+•	Reveal the portal leading to the next scene.<br>
+•	Navigate through the futuristic city and reach the portal location indicated on the map.<br>
+•	Avoid getting hit by moving cars and other obstacles to preserve health.<br>
+•	Use laser weapons wisely to clear obstacles and create a safe path to the portal.<br>
+•	Eliminate zombies by shooting them multiple times before they reach Jammo.<br>
 •	Find and reach the portal hidden within the dense forest to return to the future and win the game.
 
 ## Player Character Abilities
-•	Jammo can equip and switch between different laser weapons.
-•	Jammo has three chances (lives) in the city scene to reach the portal without getting hit by cars.
-•	In the city scene, players have access to a map that shows the layout of the city and indicates the portal's location.
-•	Players control Jammo's aim with the mouse, allowing precise targeting of obstacles, enemies, and the barrier concealing the portal.
-•	Shooting accurately is crucial in both city exploration and the zombie battle.
+•	Jammo can equip and switch between different laser weapons.<br>
+•	Jammo has three chances (lives) in the city scene to reach the portal without getting hit by cars.<br>
+•	In the city scene, players have access to a map that shows the layout of the city and indicates the portal's location.<br>
+•	Players control Jammo's aim with the mouse, allowing precise targeting of obstacles, enemies, and the barrier concealing the portal.<br>
+•	Shooting accurately is crucial in both city exploration and the zombie battle.<br>
 •	Making quick decisions during intense moments to avoid hazards, zombies, and car collisions.
 
 ![jammoIMG](https://github.com/litalporat/ReturnToTheFuture/blob/main/Assets/ReadMePics/Jammo.png)
 
 ## Enemy Character Abilities
-•	Zombies are relentless and persistent in chasing Jammo. Once they detect his presence, they will actively pursue him until they are defeated or Jammo manages to escape their reach.
-•	Zombies are resilient and require multiple shots from Jammo's weapons to be defeated.
-•	Zombies may attack simultaneously, attempting to surround Jammo from multiple directions. This requires players to be alert and responsive to avoid getting overwhelmed.
+•	Zombies are relentless and persistent in chasing Jammo. Once they detect his presence, they will actively pursue him until they are defeated or Jammo manages to escape their reach.<br>
+•	Zombies are resilient and require multiple shots from Jammo's weapons to be defeated.<br>
+•	Zombies may attack simultaneously, attempting to surround Jammo from multiple directions. This requires players to be alert and responsive to avoid getting overwhelmed.<br>
 •	Different movement patterns for zombies within a certain range, keeps the players on their toes and make the encounters dynamic and engaging.
 
 ![enemyIMG](https://github.com/litalporat/ReturnToTheFuture/blob/main/Assets/ReadMePics/Enemypng.png)
 
 ## Camera
-•	First-Person Camera: When the player is in first-person view, the camera follows the movement of the cursor as they look around the game world. As the player moves the mouse, the camera rotates accordingly, allowing them to freely look in any direction. This feature enhances immersion and allows players to survey their surroundings and spot potential threats or opportunities.
-•	Third Person Camera: The camera's position is slightly offset behind Jammo. The camera will smoothly follow the cursor's movement, giving players the ability to adjust their view as they explore and engage in various activities. 
+•	First-Person Camera: When the player is in first-person view, the camera follows the movement of the cursor as they look around the game world. As the player moves the mouse, the camera rotates accordingly, allowing them to freely look in any direction. This feature enhances immersion and allows players to survey their surroundings and spot potential threats or opportunities.<br>
+•	Third Person Camera: The camera's position is slightly offset behind Jammo. The camera will smoothly follow the cursor's movement, giving players the ability to adjust their view as they explore and engage in various activities.
 
 ## Controls
-•	Movement: W (forward), A (left), S (backward), D (right) for basic movement controls.
-•	Interact: E to interact and pick up items.
-•	Use Item: Number keys (1-3) to select and use items from the inventory.
-•	Map: M to open the in-game map, providing an overview of the city layout and objectives.
-•	Camera Movement: Mouse movement to control the camera view, allowing the player to look around and survey the environment.
-•	Camera Switch: Tab to switch between first person mode and third person mode.
+•	Movement: W (forward), A (left), S (backward), D (right) for basic movement controls.<br>
+•	Interact: E to interact and pick up items.<br>
+•	Use Item: Number keys (1-3) to select and use items from the inventory.<br>
+•	Map: M to open the in-game map, providing an overview of the city layout and objectives.<br>
+•	Camera Movement: Mouse movement to control the camera view, allowing the player to look around and survey the environment.<br>
+•	Camera Switch: Tab to switch between first person mode and third person mode.<br>
 •	Shoot: Left mouse button to shoot at any items/enemies.
 
 ## Items
 ### Helpful Items:
-•	Jammo can collect and switch between different types of weapons.
-•	In the city exploration scene, Jammo has three life chances (lives) to safely reach the portal.
-•	Each scene in the game features a portal that transports Jammo to the next scene once he completes the objectives.
+•	Jammo can collect and switch between different types of weapons.<br>
+•	In the city exploration scene, Jammo has three life chances (lives) to safely reach the portal.<br>
+•	Each scene in the game features a portal that transports Jammo to the next scene once he completes the objectives.<br>
 
 ### Stalling Items:
-•	Cars are obstacles in the city scene that can hit Jammo, depleting his health and costing him a life chance if not avoided.Players must navigate carefully through traffic to avoid collisions and progress safely.
-•	In each scene, various obstacles, such as trees, buildings, and elements hiding the portal, impacts Jammo's movement and path to the portal.
+•	Cars are obstacles in the city scene that can hit Jammo, depleting his health and costing him a life chance if not avoided.Players must navigate carefully through traffic to avoid collisions and progress safely.<br>
+•	In each scene, various obstacles, such as trees, buildings, and elements hiding the portal, impacts Jammo's movement and path to the portal.<br>
 •	Zombie traps delay Jammo's progress and restricting his movement. Players must navigate carefully around these traps to avoid getting caught in by zombies, this can result in losing the game.
 
 ## List of scenes
