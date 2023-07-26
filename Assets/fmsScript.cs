@@ -145,6 +145,7 @@ public class fmsScript : MonoBehaviour
         if(FirstCamera.activeSelf){
             ThirdCamera.SetActive(true);
             FirstCamera.SetActive(false);
+            player.GetComponent<Transform>().rotation = Quaternion.identity;
         }else{
             FirstCamera.SetActive(true);
             ThirdCamera.SetActive(false);
@@ -194,6 +195,7 @@ public class fmsScript : MonoBehaviour
         }
 
         anim.SetBool("BShoot", false);
+        
     }
 
     void pickUp(){
